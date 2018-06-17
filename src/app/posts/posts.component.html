@@ -2,11 +2,11 @@
 
 <ul>
   <li *ngFor="let post of posts$">
-    <a routerLink="/comments/{{posts$.id}}">{{post.title}}</a>
+    <a routerLink="/comments/{{post.id}}">{{post.title}}</a>
 
     <p>{{ post.body }}</p>
 
-    <a routerLink="/comments/{{posts$.id}}" style="color: rgb(255, 145, 0)"><font size='3'>
+    <a routerLink="/comments/{{post.id}}" style="color: rgb(255, 145, 0)"><font size='3'>
       Comments
     </font></a>
   </li>

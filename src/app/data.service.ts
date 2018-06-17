@@ -1,31 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { }
-
-  getUsers(){
-    return this.http.get('https://jsonplaceholder.typicode.com/users')
+  constructor(private http: HttpClient) {
   }
 
-  getUser(userId){
-    return this.http.get('https://jsonplaceholder.typicode.com/users/'+userId)
+  getUsers() {
+    return this.http.get("https://jsonplaceholder.typicode.com/users");
   }
 
-  getPosts(){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+  getUser(userId) {
+    return this.http.get("https://jsonplaceholder.typicode.com/users/" + userId);
   }
 
-  getPost(postId){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts/'+postId)
+  getPosts() {
+    return this.http.get("https://jsonplaceholder.typicode.com/posts");
   }
 
-  getPhotos(){
-    return this.http.get('https://jsonplaceholder.typicode.com/photos')
+  getPost(postId) {
+    return this.http.get("https://jsonplaceholder.typicode.com/posts/" + postId);
+  }
+
+  getPhotos() {
+    return this.http.get("https://jsonplaceholder.typicode.com/photos");
+  }
+
+  getComments(postId) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
   }
 
 }

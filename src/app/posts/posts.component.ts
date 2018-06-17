@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from "@angular/core";
+import {DataService} from "../data.service";
+import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  selector: "app-posts",
+  templateUrl: "./posts.component.html",
+  styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent implements OnInit {
 
   posts$: Object;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService) {
+  }
 
   ngOnInit() {
     this.data.getPosts().subscribe(
@@ -20,7 +21,6 @@ export class PostsComponent implements OnInit {
         console.log(this.posts$);
       }
     );
-    
   }
 
 }

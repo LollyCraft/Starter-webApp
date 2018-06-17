@@ -25,7 +25,7 @@ const routes: Routes = [
     component: PhotosComponent
     },
     {
-      path: 'comments',
+      path: 'comments/:id',
       component: CommentsComponent
       },
 ];

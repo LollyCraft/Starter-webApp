@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {DataService} from "../data.service";
+import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-comments',
@@ -11,19 +11,25 @@ import { ActivatedRoute } from '@angular/router';
 export class CommentsComponent implements OnInit {
 
   comments$: Object;
+  postId$: number;
   post$: Object;
 
-  constructor(private data: DataService, private route: ActivatedRoute) { 
-    this.route.params.subscribe( params => this.post$ = params.id)
+  constructor(private data: DataService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => this.postId$ = params.id);
+    // mai merge și așa (cred...): this.post$ = this.route.snapshot.params.id
   }
 
   ngOnInit() {
-    this.data.getPost(this.post$).subscribe(
+    this.data.getComments(this.postId$).subscribe(
       (data) => {
-        this.post$ = data;
         this.comments$ = data;
       }
-    )
+    );
+    this.data.getPost(this.postId$).subscribe(
+      (data) => {
+        this.post$ = data;
+      }
+    );
   }
 
 }
